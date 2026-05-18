@@ -31,7 +31,7 @@ const Navbar = ({ scrolled }) => {
             src={LogoWhite} 
             alt="ARTIMMO" 
             animate={{ 
-              width: scrolled ? 110 : 150,
+              width: scrolled ? 110 : 120,
               opacity: scrolled ? 0.9 : 1
             }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
