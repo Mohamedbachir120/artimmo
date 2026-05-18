@@ -33,7 +33,7 @@ const HeroSection = () => {
         <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
           ARTIMMO Promotion
         </h1>
-        <p className="font-playfair text-xl md:text-2xl text-brand-blue italic mb-8">
+        <p className="font-playfair text-xl md:text-2xl text-brand-blue  mb-8">
           Redéfinir l'habitat moderne
         </p>
 

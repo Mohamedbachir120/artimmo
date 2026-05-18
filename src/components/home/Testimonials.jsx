@@ -26,11 +26,11 @@ const Testimonials = () => {
           {testimonials.map((testimonial, i) => (
             <GlassCard key={testimonial.id} className="p-6" hover={false}>
               <div className="flex items-center gap-4 mb-4">
-                <img 
+                {/* <img 
                   src={testimonial.avatar} 
                   alt={testimonial.name} 
                   className="w-12 h-12 rounded-full object-cover" 
-                />
+                /> */}
                 <div>
                   <h4 className="text-white font-semibold">{testimonial.name}</h4>
                   <p className="text-brand-sage text-xs">{testimonial.role}</p>

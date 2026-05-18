@@ -1,16 +1,46 @@
 import { Link } from 'react-router-dom'
 import { NAV_ITEMS, CONTACT_INFO } from '../../utils/constants'
 import { projectsData } from '../../data/projects'
+import LogoWhite from "./../../assets/artimmo-white.png"
+
+export const GoogleMap = () => {
+  return (
+    <div className="glass rounded-xl overflow-hidden">
+      <div className="px-4 py-3 border-b border-white/10 flex items-center gap-2">
+        <div className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
+        <span className="text-white text-sm font-medium">Notre Emplacement</span>
+      </div>
+      <div className="relative group">
+        <iframe
+          title="ARTIMMO Promotion Immobilière"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3197.609495173752!2d2.9661866!3d36.7319388!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128faf5c8a292f85%3A0x2a94e036d282856!2sARTIMMO%20Promotion%20Immobili%C3%A8re!5e0!3m2!1sfr!2sdz!4v1779124982465!5m2!1sfr!2sdz"
+          width="100%"
+          height="180"
+         // Inside your iframe style:
+          style={{ 
+            border: 0,
+            /* ✅ Grayscale removes red, then invert makes it dark grey/blue */
+
+          }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </div>
+    </div>
+  );
+}
+
 
 const Footer = () => {
   return (
-    <footer className="border-t border-brand-primary/30 py-12 px-4">
+    <footer className="border-t border-brand-primary/30 pt-12 pb-6 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        {/* Main Footer Content */}
+        <div className="grid md:grid-cols-4 gap-8 mb-10">
           <div>
-            <span className="font-playfair text-2xl font-bold text-white">
-              ARTI<span className="text-brand-blue">MMO</span>
-            </span>
+            <img src={LogoWhite} alt="logo artimmo" width={180} className="mt-4" />
+             
             <p className="text-brand-sage text-sm mt-4">
               L'habitation d'exception élevée au rang d'art.
             </p>
@@ -51,14 +81,29 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-semibold mb-4">Contact</h4>
             <ul className="space-y-2 text-brand-sage text-sm">
-              <li>{CONTACT_INFO.address}</li>
-              <li>{CONTACT_INFO.phone}</li>
-              <li>{CONTACT_INFO.email}</li>
+              <li className="flex items-start gap-2">
+                <span className="text-brand-blue mt-0.5">📍</span>
+                {CONTACT_INFO.address}
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-brand-blue">📞</span>
+                {CONTACT_INFO.phone}
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-brand-blue">✉️</span>
+                {CONTACT_INFO.email}
+              </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-brand-primary/30 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        {/* Map Section */}
+        <div className="mb-8">
+          <GoogleMap />
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-brand-primary/30 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-brand-sage text-xs">
             © {new Date().getFullYear()} ARTIMMO Promotion Immobilière. Tous droits réservés.
           </p>
@@ -67,9 +112,10 @@ const Footer = () => {
               <a 
                 key={social} 
                 href="#" 
-                className="w-10 h-10 glass rounded-full flex items-center justify-center text-brand-sage hover:text-white transition-colors"
+                className="w-10 h-10 glass rounded-full flex items-center justify-center text-brand-sage hover:text-white hover:border-brand-blue/50 transition-all"
                 aria-label={social}
               >
+                {/* ✅ YOUR ORIGINAL SVG — no missing component */}
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10z"/>
                 </svg>
@@ -83,3 +129,4 @@ const Footer = () => {
 }
 
 export default Footer
+

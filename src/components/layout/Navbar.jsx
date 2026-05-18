@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NAV_ITEMS } from '../../utils/constants'
 import Button from '../common/Button'
+import LogoWhite from "./../../assets/artimmo-white.png"
 
 const Navbar = ({ scrolled }) => {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -12,19 +13,30 @@ const Navbar = ({ scrolled }) => {
 
   return (
     <motion.nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass py-3' : 'py-5'}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'py-3' : 'py-5'}`}
+      style={{
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        backgroundColor: scrolled 
+          ? 'rgba(8, 47, 73, 0.85)' 
+          : 'rgba(8, 47, 73, 0.4)'
+      }}
       initial={{ y: -100 }} 
       animate={{ y: 0 }} 
       transition={{ duration: 0.6, delay: 0.2 }}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
         <Link to="/">
-          <motion.span 
-            className="font-playfair text-2xl md:text-3xl font-bold text-white tracking-wider cursor-pointer"
-            whileHover={{ scale: 1.02 }}
-          >
-            ARTI<span className="text-brand-blue">MMO</span>
-          </motion.span>
+          <motion.img 
+            src={LogoWhite} 
+            alt="ARTIMMO" 
+            animate={{ 
+              width: scrolled ? 110 : 150,
+              opacity: scrolled ? 0.9 : 1
+            }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="object-contain"
+          />
         </Link>
 
         <div className="hidden md:flex items-center gap-8">

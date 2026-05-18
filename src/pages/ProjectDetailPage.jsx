@@ -6,7 +6,7 @@ import Button from '../components/common/Button'
 import GlassCard from '../components/common/GlassCard'
 import ThreeViewer from '../components/projects/ThreeViewer'
 import { getProjectBySlug } from '../data/projects'
-import { formatPrice, getStatusColor } from '../utils/formatters'
+import { getStatusColor } from '../utils/formatters'
 
 const ProjectDetailPage = () => {
   const { slug } = useParams()
@@ -31,9 +31,8 @@ const ProjectDetailPage = () => {
     keywords: [
       project.name.toLowerCase(),
       project.city.toLowerCase(),
-      project.type.toLowerCase(),
-      "immobilier",
-      "alger"
+      'immobilier',
+      'alger'
     ],
     path: `/nos-signatures/${project.slug}`,
     image: project.images[0],
@@ -67,7 +66,8 @@ const ProjectDetailPage = () => {
 
       <div className="page-content">
         {/* Hero */}
-        <section className="relative h-[60vh] min-h-[500px]">
+               {/* Hero */}
+               <section className="relative h-[60vh] min-h-[500px]">
           <motion.img 
             key={activeImage} 
             src={project.images[activeImage]} 
@@ -86,17 +86,17 @@ const ProjectDetailPage = () => {
                 animate={{ opacity: 1, y: 0 }} 
                 transition={{ delay: 0.2 }}
               >
-                <span 
-                  className="inline-block px-3 py-1 rounded-md text-xs font-semibold uppercase tracking-wider mb-4"
-                  style={{ backgroundColor: project.badgeColor }}
+                <h1 
+                  className="font-playfair text-4xl md:text-5xl font-bold text-white mb-2"
+                  style={{ textShadow: '0 2px 15px rgba(0,0,0,0.3), 0 4px 30px rgba(0,0,0,0.3)' }}
                 >
-                  {project.badge}
-                </span>
-                <h1 className="font-playfair text-4xl md:text-5xl font-bold text-white mb-2">
                   {project.seo.h1}
                 </h1>
-                <p className="text-brand-sage flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <p 
+                  className="text-brand-sage flex items-center gap-2"
+                  style={{ textShadow: '0 1px 10px rgba(0,0,0,0.4)' }}
+                >
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
@@ -125,6 +125,7 @@ const ProjectDetailPage = () => {
         <section className="py-16 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-3 gap-8">
+              {/* Colonne principale */}
               <div className="lg:col-span-2">
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }} 
@@ -133,11 +134,11 @@ const ProjectDetailPage = () => {
                   <h2 className="font-playfair text-2xl text-white mb-6">Description</h2>
                   <p className="text-brand-sage leading-relaxed mb-8">{project.description}</p>
 
-                  <h3 className="font-playfair text-xl text-white mb-4">Caractéristiques</h3>
-                  <div className="grid grid-cols-2 gap-4 mb-8">
+                  <h3 className="font-playfair text-xl text-white mb-4">Caractéristiques du programme</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                     {project.features.map((feature, i) => (
                       <div key={i} className="flex items-center gap-3 text-brand-sage">
-                        <svg className="w-5 h-5 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-brand-green flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         {feature}
@@ -145,30 +146,38 @@ const ProjectDetailPage = () => {
                     ))}
                   </div>
 
-                  <h3 className="font-playfair text-xl text-white mb-4">Visite Virtuelle 3D</h3>
-                  <div className="relative rounded-2xl overflow-hidden border border-brand-primary/30">
-                    <ThreeViewer />
-                    <Button 
-                      variant="ghost" 
-                      size="sm"
-                      className="absolute top-4 right-4"
-                      onClick={() => setShow3DFullscreen(true)}
-                    >
-                      Plein écran
-                    </Button>
-                  </div>
+                  {/* Détails du programme */}
+                  {project.projectInfo && (
+                    <>
+                      <h3 className="font-playfair text-xl text-white mb-4 mt-8">Détails du programme</h3>
+                      <div className="grid grid-cols-2 gap-4">
+                        {project.projectInfo.totalLogements && (
+                          <div className="bg-brand-primary/10 rounded-lg p-4">
+                            <span className="text-brand-sage text-sm">Logements</span>
+                            <p className="text-white text-lg font-semibold">{project.projectInfo.totalLogements}</p>
+                          </div>
+                        )}
+                        <div className="bg-brand-primary/10 rounded-lg p-4">
+                          <span className="text-brand-sage text-sm">Types</span>
+                          <p className="text-white text-lg font-semibold">{project.projectInfo.types.join(', ')}</p>
+                        </div>
+                        <div className="bg-brand-primary/10 rounded-lg p-4">
+                          <span className="text-brand-sage text-sm">Surfaces</span>
+                          <p className="text-white text-lg font-semibold">{project.projectInfo.surfaces}</p>
+                        </div>
+                        <div className="bg-brand-primary/10 rounded-lg p-4">
+                          <span className="text-brand-sage text-sm">Configuration</span>
+                          <p className="text-white text-lg font-semibold">{project.projectInfo.configuration}</p>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </motion.div>
               </div>
 
+              {/* Sidebar */}
               <div className="lg:col-span-1">
                 <GlassCard variant="strong" className="p-6 sticky top-28" hover={false}>
-                  <div className="text-center mb-6">
-                    <p className="text-brand-sage text-xs uppercase tracking-wider">À partir de</p>
-                    <p className="font-playfair text-3xl text-white font-bold">
-                      {formatPrice(project.price)}
-                    </p>
-                  </div>
-
                   <div className="space-y-4 mb-6">
                     <div className="flex justify-between py-3 border-b border-brand-primary/30">
                       <span className="text-brand-sage">Surface</span>
@@ -177,6 +186,14 @@ const ProjectDetailPage = () => {
                     <div className="flex justify-between py-3 border-b border-brand-primary/30">
                       <span className="text-brand-sage">Type</span>
                       <span className="text-white font-semibold">{project.type}</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-brand-primary/30">
+                      <span className="text-brand-sage">Étage</span>
+                      <span className="text-white font-semibold">{project.etage}</span>
+                    </div>
+                    <div className="flex justify-between py-3 border-b border-brand-primary/30">
+                      <span className="text-brand-sage">Bloc</span>
+                      <span className="text-white font-semibold">{project.bloc}</span>
                     </div>
                     <div className="flex justify-between py-3 border-b border-brand-primary/30">
                       <span className="text-brand-sage">Statut</span>
@@ -192,7 +209,7 @@ const ProjectDetailPage = () => {
 
                   <Link to="/parlons-en">
                     <Button variant="primary" size="lg" className="w-full mb-3">
-                      Réserver ce bien
+                      {project.status === 'En cours' ? 'Être informé' : 'Réserver ce bien'}
                     </Button>
                   </Link>
                   <Button variant="secondary" size="lg" className="w-full">

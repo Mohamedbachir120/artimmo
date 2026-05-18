@@ -22,12 +22,12 @@ const ProjectCard = ({ project }) => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-darker via-transparent to-transparent" />
           
-          <span 
+          {/* <span 
             className="absolute top-4 left-4 px-3 py-1 rounded-md text-xs font-semibold uppercase tracking-wider" 
             style={{ backgroundColor: project.badgeColor }}
           >
             {project.badge}
-          </span>
+          </span> */}
           
           <span className={`absolute top-4 right-4 px-3 py-1 rounded-md text-xs font-medium ${getStatusColor(project.status)}`}>
             {project.status}

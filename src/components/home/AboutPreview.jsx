@@ -5,7 +5,7 @@ const AboutPreview = () => {
   const highlights = [
     {
       title: "L'Adresse",
-      description: "Chaque résidence ARTimmo est implantée dans l'un des quartiers les plus convoités de la capitale algérienne.",
+      description: "Chaque résidence ARTIMMO est implantée dans l'un des quartiers les plus convoités de la capitale algérienne.",
       color: 'border-brand-blue'
     },
     {
@@ -31,7 +31,7 @@ const AboutPreview = () => {
           <SectionTitle tag="Notre Vision" title="L'exigence, ancrée dans chaque pierre" center={false} />
           
           <p className="text-brand-sage mb-8 leading-relaxed">
-            ARTimmo est le promoteur immobilier de référence à Alger. Chaque résidence haut standing que nous livrons est le fruit d'une démarche rigoureuse — celle d'un acteur fiable qui ne dissocie jamais la qualité architecturale du bien-être de ses acquéreurs. Que vous souhaitiez acheter un appartement neuf à Alger ou investir dans l'immobilier, nos programmes résidentiels sont conçus pour ceux qui exigent le meilleur.
+            ARTIMMO est le promoteur immobilier de référence à Alger. Chaque résidence haut standing que nous livrons est le fruit d'une démarche rigoureuse — celle d'un acteur fiable qui ne dissocie jamais la qualité architecturale du bien-être de ses acquéreurs. Que vous souhaitiez acheter un appartement neuf à Alger ou investir dans l'immobilier, nos programmes résidentiels sont conçus pour ceux qui exigent le meilleur.
           </p>
 
           <div className="grid grid-cols-1 gap-4">

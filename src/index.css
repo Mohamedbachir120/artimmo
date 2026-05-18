@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  /* ✅ These generate: text-brand-primary, bg-brand-primary, border-brand-primary */
+  /* ✅ Color Palette */
   --color-brand-primary: #26405B;
   --color-brand-blue: #6AA0AE;
   --color-brand-sage: #BACBC1;
   --color-brand-green: #608874;
 
-  /* ✅ These generate: font-playfair, font-inter */
-  --font-playfair: 'Playfair Display', serif;
+  /* ✅ AGHATO Font Family */
+  --font-aghato: 'AGHATO', sans-serif;
   --font-inter: 'Inter', sans-serif;
 }
 
 html { scroll-behavior: smooth; }
 body { 
-  font-family: 'Inter', sans-serif; 
+  font-family: 'AGHATO', sans-serif; 
   background: #0d1721; 
   color: #fff; 
   overflow-x: hidden; 
@@ -71,4 +71,3 @@ body {
   0%, 100% { opacity: 0.3; } 
   50% { opacity: 0.6; } 
 }
-

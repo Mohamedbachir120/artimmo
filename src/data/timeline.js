@@ -12,7 +12,7 @@ export const timeline = [
     { 
       year: 2018, 
       title: "L'affirmation", 
-      desc: "ARTimmo intègre la domotique et le smart home dans ses programmes résidentiels." 
+      desc: "ARTIMMO intègre la domotique et le smart home dans ses programmes résidentiels." 
     },
     { 
       year: 2022, 

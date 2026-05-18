@@ -7,7 +7,7 @@ import Departments from '../components/about/Departments'
 
 const AboutPage = () => {
   const seoData = {
-    title: "À Propos d'ARTimmo - Promoteur Immobilier Algérie",
+    title: "À Propos d'ARTIMMO - Promoteur Immobilier Algérie",
     description: "16 ans d'expertise en promotion immobilière haut standing à Alger. Découvrez notre vision, nos valeurs et notre engagement pour l'excellence.",
     keywords: [
       "promoteur immobilier alger",
@@ -48,7 +48,7 @@ const AboutPage = () => {
             >
               <h2 className="font-playfair text-3xl text-white mb-6">Une Vision, Une Mission</h2>
               <p className="text-brand-sage leading-relaxed">
-                Chez ARTimmo, acquérir un appartement à Alger représente bien plus qu'une simple démarche immobilière : c'est un choix stratégique, un projet de vie, ou une décision patrimoniale mûrement réfléchie. En tant que promoteur immobilier de référence en Algérie, ARTIMMO accompagne ses clients avec des programmes immobiliers neufs, structurés et cohérents, implantés dans des adresses à fort potentiel, dont les secteurs les plus prisés de la wilaya d'Alger incluant Ouled Fayet, Draria ou encore Chéraga, et offrant des Simplex haut standing et des duplex premium aux finitions nobles, des espaces communs soignés, des parkings sécurisés et des commerces sélectionnés en pied d'immeuble, ce luxe de proximité qui transforme le quotidien. Chaque acquisition est pensée comme une opportunité de croissance patrimoniale à long terme, soutenue par un accompagnement juridique et administratif complet, des délais contractuels tenus et une vision orientée valorisation et sécurité, que vous souhaitiez habiter, transmettre ou investir.
+                Chez ARTIMMO, acquérir un appartement à Alger représente bien plus qu'une simple démarche immobilière : c'est un choix stratégique, un projet de vie, ou une décision patrimoniale mûrement réfléchie. En tant que promoteur immobilier de référence en Algérie, ARTIMMO accompagne ses clients avec des programmes immobiliers neufs, structurés et cohérents, implantés dans des adresses à fort potentiel, dont les secteurs les plus prisés de la wilaya d'Alger incluant Ouled Fayet, Draria ou encore Chéraga, et offrant des Simplex haut standing et des duplex premium aux finitions nobles, des espaces communs soignés, des parkings sécurisés et des commerces sélectionnés en pied d'immeuble, ce luxe de proximité qui transforme le quotidien. Chaque acquisition est pensée comme une opportunité de croissance patrimoniale à long terme, soutenue par un accompagnement juridique et administratif complet, des délais contractuels tenus et une vision orientée valorisation et sécurité, que vous souhaitiez habiter, transmettre ou investir.
               </p>
             </motion.div>
 
@@ -59,7 +59,7 @@ const AboutPage = () => {
             >
               <img 
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" 
-                alt="ARTimmo Promotion Immobilier" 
+                alt="ARTIMMO Promotion Immobilier" 
                 className="rounded-2xl w-full" 
               />
             </motion.div>

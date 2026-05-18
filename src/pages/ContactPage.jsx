@@ -7,8 +7,8 @@ import ContactInfo from '../components/contact/ContactInfo'
 
 const ContactPage = () => {
   const seoData = {
-    title: "Contactez ARTimmo - Prenez Rendez-vous",
-    description: "Contactez nos experts immobiliers pour votre projet d'acquisition. Réservez une visite privée ou échangez avec un conseiller ARTimmo.",
+    title: "Contactez ARTIMMO - Prenez Rendez-vous",
+    description: "Contactez nos experts immobiliers pour votre projet d'acquisition. Réservez une visite privée ou échangez avec un conseiller ARTIMMO.",
     keywords: [
       "contact artimmo",
       "rendez-vous immobilier",
@@ -36,7 +36,7 @@ const ContactPage = () => {
               <GlassCard variant="default" className="p-6 mb-6" hover={false}>
                 <h3 className="text-white font-semibold mb-2">Réserver ma visite privée</h3>
                 <p className="text-brand-sage text-sm mb-4">
-                  Choisissez un créneau pour votre appel avec un conseiller ARTimmo.
+                  Choisissez un créneau pour votre appel avec un conseiller ARTIMMO.
                 </p>
                 <BookingCalendar />
               </GlassCard>
