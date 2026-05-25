@@ -1,4 +1,10 @@
 @import "tailwindcss";
+@font-face {
+  font-family: 'Aesthetic Romance';
+  src: url('/src/assets/Aesthetic\ Romance.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @theme {
   /* ✅ Color Palette */
