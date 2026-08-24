@@ -35,7 +35,7 @@ const ProjectDetailPage = () => {
       'alger'
     ],
     path: `/nos-signatures/${project.slug}`,
-    image: project.images[0],
+    image: project.images[0].src,
     structuredData: {
       "@context": "https://schema.org",
       "@type": "Residence",
@@ -70,7 +70,7 @@ const ProjectDetailPage = () => {
                <section className="relative h-[60vh] min-h-[500px]">
           <motion.img 
             key={activeImage} 
-            src={project.images[activeImage]} 
+            src={project.images[activeImage].src} 
             alt={`${project.name} - ${project.city}`}
             className="absolute inset-0 w-full h-full object-cover"
             initial={{ opacity: 0 }} 
@@ -115,7 +115,7 @@ const ProjectDetailPage = () => {
                   activeImage === i ? 'border-brand-blue' : 'border-transparent opacity-60'
                 }`}
               >
-                <img src={img} alt="" className="w-full h-full object-cover" />
+                <img src={img.src} alt="" className="w-full h-full object-cover" />
               </button>
             ))}
           </div>

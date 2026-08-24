@@ -15,7 +15,7 @@ const ProjectCard = ({ project }) => {
       <Link to={`/nos-signatures/${project.slug}`}>
         <div className="relative h-56 overflow-hidden">
           <img 
-            src={project.images[0]} 
+            src={project.images[0].src} 
             alt={`${project.name} - ${project.city}`}
             className="project-card-img w-full h-full object-cover"
             loading="lazy"
