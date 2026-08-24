@@ -45,10 +45,7 @@ const ProjectCard = ({ project }) => {
               <span className="text-brand-blue font-semibold">{project.surface} m²</span>
               <span className="text-brand-sage ml-2">| {project.type}</span>
             </div>
-            <div className="text-right">
-              <span className="text-brand-sage text-xs">À partir de</span>
-              <p className="text-white font-semibold">{formatPrice(project.price)}</p>
-            </div>
+           
           </div>
         </div>
       </Link>

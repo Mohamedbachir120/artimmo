@@ -2,18 +2,68 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- ⚠️ Remplacer par un vrai favicon ARTIMMO (voir note plus bas) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#608874" />
+
+    <!-- Indexation -->
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://artimmo.dz/" />
+
+    <!-- SEO de base -->
+    <title>ARTIMMO Promotion | Promoteur immobilier haut standing à Alger</title>
     <meta name="description" content="ARTIMMO Promotion - Promoteur immobilier de référence à Alger. Appartements et duplex haut standing à Ouled Fayet, Draria et Chéraga." />
     <meta name="keywords" content="immobilier alger, promotion immobiliere, appartement haut standing, duplex alger, ouled fayet, draria, cheraga" />
+    <meta name="author" content="ARTIMMO Promotion" />
+
+    <!-- Open Graph -->
     <meta property="og:title" content="ARTIMMO Promotion | L'excellence immobilière" />
-    <meta property="og:description" content="Promoteur immobilier de référence à Alger" />
+    <meta property="og:description" content="Promoteur immobilier de référence à Alger. Appartements et duplex haut standing à Ouled Fayet, Draria et Chéraga." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://artimmo.dz" />
+    <meta property="og:site_name" content="ARTIMMO Promotion" />
+    <meta property="og:locale" content="fr_DZ" />
+    <!-- ⚠️ Remplacer par une vraie image de partage (1200x630px) -->
+    <meta property="og:image" content="https://artimmo.dz/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ARTIMMO Promotion | L'excellence immobilière" />
+    <meta name="twitter:description" content="Promoteur immobilier de référence à Alger. Appartements et duplex haut standing à Ouled Fayet, Draria et Chéraga." />
+    <meta name="twitter:image" content="https://artimmo.dz/og-image.jpg" />
+
+    <!-- Fonts : preconnect pour accélérer le chargement -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=AGHATO&display=swap" rel="stylesheet">
 
-
-    <title>ARTIMMO Promotion | L'excellence immobilière</title>
+    <!-- Données structurées : aide Google à comprendre l'activité (rich snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "ARTIMMO Promotion",
+      "description": "Promoteur immobilier haut standing à Alger, spécialisé dans les appartements et duplex premium.",
+      "url": "https://artimmo.dz",
+      "areaServed": [
+        { "@type": "City", "name": "Ouled Fayet" },
+        { "@type": "City", "name": "Chéraga" },
+        { "@type": "City", "name": "Draria" }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Alger",
+        "addressCountry": "DZ"
+      }
+    }
+    </script>
 </head>
 <body>
     <div id="root"></div>
