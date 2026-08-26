@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import SectionTitle from '../common/SectionTitle'
+import oxygen from './../../assets/3D/residence-oxygene-appartement-haut-standing-ouled-fayet-alger.webp'
 
 const AboutPreview = () => {
   const highlights = [
@@ -51,7 +52,7 @@ const AboutPreview = () => {
           viewport={{ once: true }}
         >
           <img 
-            src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" 
+            src={oxygen} 
             alt="Architecture résidentielle haut standing" 
             className="rounded-2xl w-full border border-brand-primary/30" 
           />

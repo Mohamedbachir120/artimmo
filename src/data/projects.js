@@ -1,19 +1,19 @@
 // Fichiers déjà renommés en .webp via rename.sh — voir /assets/3D
 
-import oxygene1 from '../assets/3D/residence-oxygene-appartement-haut-standing-ouled-fayet-alger.png'
+import oxygene1 from '../assets/3D/residence-oxygene-appartement-haut-standing-ouled-fayet-alger.webp'
 
-import solarium1 from '../assets/3D/residences-solarium-cheraga-tours-residentielles-exception-alger.png'
-import solarium2 from '../assets/3D/residences-solarium-appartements-lumineux-cheraga-alger.png'
-import solarium2b from '../assets/3D/residences-solarium-investissement-immobilier-cheraga-alger.png'
-import solarium3 from '../assets/3D/residences-solarium-tours-residentielles-premium-cheraga-alger.png'
+import solarium1 from '../assets/3D/residences-solarium-cheraga-tours-residentielles-exception-alger.webp'
+import solarium2 from '../assets/3D/residences-solarium-appartements-lumineux-cheraga-alger.webp'
+import solarium2b from '../assets/3D/residences-solarium-investissement-immobilier-cheraga-alger.webp'
+import solarium3 from '../assets/3D/residences-solarium-tours-residentielles-premium-cheraga-alger.webp'
 
-import splendia1 from '../assets/3D/residence-splendia-appartement-haut-standing-cheraga-alger.png'
+import splendia1 from '../assets/3D/residence-splendia-appartement-haut-standing-cheraga-alger.webp'
 
-import atmosphere from '../assets/3D/residence-atmosphere-immobilier-haut-standing-draria-alger.png'
+import atmosphere from '../assets/3D/residence-atmosphere-immobilier-haut-standing-draria-alger.webp'
 
 // ⚠️ Utilise encore le placeholder partagé avec SPLENDIA — à remplacer
 // dès que le vrai visuel VERDONIA sera prêt et converti en webp.
-import verdonia from '../assets/3D/Rendu 3D extérieurs ARTIMMO.png'
+import verdonia from '../assets/3D/Rendu 3D extérieurs ARTIMMO.webp'
 
 export const projectsData = [
   {

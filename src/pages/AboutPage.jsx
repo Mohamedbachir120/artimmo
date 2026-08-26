@@ -4,6 +4,7 @@ import SectionTitle from '../components/common/SectionTitle'
 import Values from '../components/about/Values'
 import Timeline from '../components/about/Timeline'
 import Departments from '../components/about/Departments'
+import oxygen from './../assets/3D/residence-oxygene-appartement-haut-standing-ouled-fayet-alger.png'
 
 const AboutPage = () => {
   const seoData = {
@@ -33,7 +34,7 @@ const AboutPage = () => {
               Notre Histoire
             </span>
             <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl text-white mt-3 mb-6">
-              l'habitation d'exception élevé au rang d'art
+              l'habitation d'exception élevée au rang d'art
             </h1>
             <p className="text-brand-sage max-w-2xl mx-auto">
               16 ans à redéfinir les standards du haut standing à Alger.
@@ -58,7 +59,7 @@ const AboutPage = () => {
               viewport={{ once: true }}
             >
               <img 
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" 
+                src={oxygen}
                 alt="ARTIMMO Promotion Immobilier" 
                 className="rounded-2xl w-full" 
               />

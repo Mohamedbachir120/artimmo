@@ -42,7 +42,7 @@ const Footer = () => {
             <img src={LogoWhite} alt="logo artimmo" width={180} className="mt-4" />
              
             <p className="text-brand-sage text-sm mt-4">
-              L'habitation d'exception élevée au rang d'art.
+            L’art d’atteindre l’excellence
             </p>
           </div>
 

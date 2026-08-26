@@ -21,7 +21,7 @@ const ContactInfo = () => {
             </svg>
             <div>
               <p className="text-white">Alger, Algérie</p>
-              <p className="text-brand-sage text-sm">Zone des dunes, Hydra</p>
+              <p className="text-brand-sage text-sm">{CONTACT_INFO.address}</p>
             </div>
           </div>
 

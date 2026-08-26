@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import verdonina from './../../assets/3D/residence-verdonia-cheraga-en-cours-alger.webp'
 import Button from "../common/Button";
 
 const HeroSection = () => {
@@ -7,7 +8,7 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80"
+          src={verdonina}
           alt="Résidences haut standing Alger"
           className="w-full h-full object-cover brightness-[0.25]"
         />

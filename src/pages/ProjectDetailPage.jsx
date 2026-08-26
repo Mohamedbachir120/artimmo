@@ -212,9 +212,7 @@ const ProjectDetailPage = () => {
                       {project.status === 'En cours' ? 'Être informé' : 'Réserver ce bien'}
                     </Button>
                   </Link>
-                  <Button variant="secondary" size="lg" className="w-full">
-                    Télécharger la brochure
-                  </Button>
+                 
                 </GlassCard>
               </div>
             </div>
