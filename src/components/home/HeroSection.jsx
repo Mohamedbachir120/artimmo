@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import verdonina from './../../assets/3D/residence-verdonia-cheraga-en-cours-alger.webp'
+import verdonina from './../../assets/3D/verdonia-residence-facade-nocturne-appartement-haut-standing-alger.webp'
 import Button from "../common/Button";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <section className="relative min-h-screen flex items-center justify-center">
+      {/* overflow-hidden moved here so ONLY the image is clipped, not the card below */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           src={verdonina}
           alt="Résidences haut standing Alger"
@@ -16,7 +17,10 @@ const HeroSection = () => {
       </div>
 
       <motion.div
-        className="relative z-10 glass-strong rounded-3xl p-8 md:p-12 max-w-3xl mx-4 text-center"
+        // was centered in the flex flow — now pinned to the bottom edge,
+        // then pushed down by half its own height so only the top half sits inside the hero
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20
+                   glass-strong rounded-3xl p-8 md:p-12 max-w-3xl w-[calc(100%-2rem)] text-center"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
@@ -39,7 +43,7 @@ const HeroSection = () => {
             ARTIMMO
           </span>
         </h1>
-        <p className="font-playfair text-xl md:text-2xl text-brand-blue  mb-8">
+        <p className="font-playfair text-xl md:text-2xl text-brand-blue mb-8">
           Redéfinir l'habitat moderne
         </p>
 
@@ -58,22 +62,12 @@ const HeroSection = () => {
       </motion.div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-brand-sage"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-brand-sage z-10"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </motion.div>
     </section>

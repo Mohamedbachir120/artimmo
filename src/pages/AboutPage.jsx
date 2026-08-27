@@ -4,7 +4,7 @@ import SectionTitle from '../components/common/SectionTitle'
 import Values from '../components/about/Values'
 import Timeline from '../components/about/Timeline'
 import Departments from '../components/about/Departments'
-import oxygen from './../assets/3D/residence-oxygene-appartement-haut-standing-ouled-fayet-alger.png'
+import oxygen from './../assets/3D/residence-oxygene-appartement-haut-standing-ouled-fayet-alger.webp'
 
 const AboutPage = () => {
   const seoData = {
