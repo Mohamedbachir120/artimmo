@@ -11,7 +11,7 @@ const stats = [
 
 const StatsSection = () => {
   return (
-    <section className="mt-32 py-20 px-4">
+    <section className=" py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <GlassCard variant="strong" className="p-8 md:p-12" hover={false}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">

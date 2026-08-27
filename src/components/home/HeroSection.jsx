@@ -5,64 +5,37 @@ import Button from "../common/Button";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center">
-      {/* overflow-hidden moved here so ONLY the image is clipped, not the card below */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 z-0">
         <img
           src={verdonina}
           alt="Résidences haut standing Alger"
-          className="w-full h-full object-cover brightness-[0.25]"
+          className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-brand-dark/50" />
+        {/* Overlay neutre (noir) pour la lisibilité du texte, sans teinte bleue ni flou */}
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       <motion.div
-        // was centered in the flex flow — now pinned to the bottom edge,
-        // then pushed down by half its own height so only the top half sits inside the hero
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20
-                   glass-strong rounded-3xl p-8 md:p-12 max-w-3xl w-[calc(100%-2rem)] text-center"
-        initial={{ opacity: 0, y: 50 }}
+        className="relative z-20 flex flex-col items-center justify-center text-center px-4"
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
       >
-        <motion.div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-green bg-brand-green/10 text-brand-sage text-xs uppercase tracking-wider mb-6"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5 }}
+        <h1
+          style={{ fontFamily: "'Aesthetic Romance', serif" }}
+          className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6"
         >
-          <span className="w-2 h-2 bg-brand-green rounded-full animate-pulse" />
-          Des propriétés d'exception réservées à l'élite algérienne
-        </motion.div>
-
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-          <span
-            style={{ fontFamily: "'Aesthetic Romance', serif" }}
-            className="text-5xl md:text-6xl lg:text-7xl"
-          >
-            ARTIMMO
-          </span>
+          VERDONIA
         </h1>
-        <p className="font-playfair text-xl md:text-2xl text-brand-blue mb-8">
-          Redéfinir l'habitat moderne
-        </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/nos-signatures">
-            <Button variant="primary" size="lg">
-              Découvrir nos résidences
-            </Button>
-          </Link>
-          <Link to="/parlons-en">
-            <Button variant="secondary" size="lg">
-              Prendre contact
-            </Button>
-          </Link>
-        </div>
+        <p className="text-xl md:text-2xl uppercase tracking-[0.3em] text-white/90">
+          Bientôt disponible
+        </p>
       </motion.div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-brand-sage z-10"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white z-10"
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >
@@ -75,3 +48,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
