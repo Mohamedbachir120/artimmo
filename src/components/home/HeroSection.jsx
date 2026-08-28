@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import verdonina from './../../assets/3D/v2/verdonia-residence-facade-nocturne-appartement-haut-standing-alger.webp'
+import verdonina from './../../assets/3D/v2/verdonia vue de nuit.webp'
 import Button from "../common/Button";
 
 const HeroSection = () => {
@@ -13,10 +13,31 @@ const HeroSection = () => {
           className="w-full h-full object-cover"
         />
         {/* Overlay neutre (noir) pour la lisibilité du texte, sans teinte bleue ni flou */}
-        <div className="absolute inset-0 " />
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
-      
+      <div className="relative z-10 flex flex-col items-center text-center text-white px-4">
+        <h1
+          className="text-6xl md:text-8xl lg:text-9xl leading-none"
+          style={{ fontFamily: "Blacksword, cursive" }}
+        >
+          Verdonia
+        </h1>
+
+        <p
+          className="mt-2 text-lg md:text-2xl tracking-wide"
+          style={{ fontFamily: "Montserrat, sans-serif" }}
+        >
+          Résidence by ARTIMMO
+        </p>
+
+        <h2
+          className="mt-8 md:mt-12 text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-wide"
+          style={{ fontFamily: "Montserrat, sans-serif" }}
+        >
+          COMING SOON
+        </h2>
+      </div>
 
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white z-10"
@@ -32,4 +53,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
