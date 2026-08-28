@@ -1,63 +1,62 @@
 // Fichiers déjà renommés en .webp via rename.sh — voir /assets/3D
 
-import oxygene1 from '../assets/3D/residence-oxygene-appartement-haut-standing-ouled-fayet-alger.webp'
+import oxygene1 from '../assets/3D/v2/residence-oxygene-appartement-haut-standing-ouled-fayet-alger.webp'
 
-import solarium1 from '../assets/3D/residences-solarium-cheraga-tours-residentielles-exception-alger.webp'
-import solarium2 from '../assets/3D/residences-solarium-appartements-lumineux-cheraga-alger.webp'
-import solarium2b from '../assets/3D/residences-solarium-investissement-immobilier-cheraga-alger.webp'
-import solarium3 from '../assets/3D/residences-solarium-tours-residentielles-premium-cheraga-alger.webp'
+import solarium1 from '../assets/3D/v2/residences-solarium-appartements-lumineux-cheraga-alger.webp'
+import solarium2 from '../assets/3D/v2/residences-solarium-investissement-immobilier-cheraga-alger.webp'
+import solarium2b from '../assets/3D/v2/residences-solarium-tours-residentielles-premium-cheraga-alger.webp'
 
-import splendia1 from '../assets/3D/residence-splendia-appartement-haut-standing-cheraga-alger.webp'
+import splendia1 from '../assets/3D/v2/residence-splendia-appartement-haut-standing-cheraga-alger.webp'
 
-import atmosphere from '../assets/3D/residence-atmosphere-immobilier-haut-standing-draria-alger.webp'
+import atmosphere from '../assets/3D/v2/residence-atmosphere-immobilier-haut-standing-draria-alger.webp'
 
 // ⚠️ Utilise encore le placeholder partagé avec SPLENDIA — à remplacer
 // dès que le vrai visuel VERDONIA sera prêt et converti en webp.
-import verdonia from '../assets/3D/verdonia-residence-facade-nocturne-appartement-haut-standing-alger.webp'
+import verdonia from '../assets/3D/v2/verdonia-residence-facade-nocturne-appartement-haut-standing-alger.webp'
 
 export const projectsData = [
-  {
-    id: 1,
-    slug: 'residence-verdonia',
-    name: "Résidence VERDONIA",
-    location: "Chéraga — Grand Alger",
-    city: "Chéraga",
-    type: "F4",
-    status: "En cours",
-    surface: 165,
-    etage: 3,
-    bloc: 20,
-    projectInfo: {
-      totalLogements: null,
-      types: ["À définir"],
-      surfaces: "À définir",
-      configuration: "En cours de conception"
-    },
-    images: [
-      {
-        src: verdonia,
-        // ⚠️ Pas de recommandation SEO fournie pour VERDONIA : ALT provisoire,
-        // à remplacer une fois l'audit SEO étendu à ce projet.
-        alt: "Résidence VERDONIA à Chéraga, futur programme immobilier haut standing signé ARTIMMO"
-      }
-    ],
-    badge: "Nouveau",
-    badgeColor: "#608874",
-    seo: {
-      title: "Résidence VERDONIA — En cours de construction",
-      metaDescription: "Nouvelle résidence premium ARTIMMO actuellement en construction à Chéraga.",
-      h1: "VERDONIA : la prochaine adresse d'exception signée ARTIMMO"
-    },
-    description: "Résidence actuellement en cours de construction à Chéraga. VERDONIA perpétue l'exigence ARTIMMO avec des finitions premium et des espaces communs soignés.",
-    features: [
-      "En cours de construction",
-      "Finitions premium",
-      "Espaces communs soignés",
-      "Parking sécurisé",
-      "Livraison prévue 2026"
-    ],
-    year: 2026
-  },
+  // {
+  //   id: 1,
+  //   slug: 'residence-verdonia',
+  //   name: "Résidence VERDONIA",
+  //   location: "Chéraga — Grand Alger",
+  //   city: "Chéraga",
+  //   type: "F4",
+  //   status: "En cours",
+  //   surface: 165,
+  //   etage: 3,
+  //   bloc: 20,
+  //   projectInfo: {
+  //     totalLogements: null,
+  //     types: ["À définir"],
+  //     surfaces: "À définir",
+  //     configuration: "En cours de conception"
+  //   },
+  //   images: [
+  //     {
+  //       src: verdonia,
+  //       // ⚠️ Pas de recommandation SEO fournie pour VERDONIA : ALT provisoire,
+  //       // à remplacer une fois l'audit SEO étendu à ce projet.
+  //       alt: "Résidence VERDONIA à Chéraga, futur programme immobilier haut standing signé ARTIMMO"
+  //     }
+  //   ],
+  //   badge: "Nouveau",
+  //   badgeColor: "#608874",
+  //   seo: {
+  //     title: "Résidence VERDONIA — En cours de construction",
+  //     metaDescription: "Nouvelle résidence premium ARTIMMO actuellement en construction à Chéraga.",
+  //     h1: "VERDONIA : la prochaine adresse d'exception signée ARTIMMO"
+  //   },
+  //   description: "Résidence actuellement en cours de construction à Chéraga. VERDONIA perpétue l'exigence ARTIMMO avec des finitions premium et des espaces communs soignés.",
+  //   features: [
+  //     "En cours de construction",
+  //     "Finitions premium",
+  //     "Espaces communs soignés",
+  //     "Parking sécurisé",
+  //     "Livraison prévue 2026"
+  //   ],
+  //   year: 2026
+  // },
   {
     id: 5,
     slug: 'residence-oxygene',
@@ -138,10 +137,7 @@ export const projectsData = [
         src: solarium2b,
         alt: "Tour des Résidences SOLARIUM intégrée dans un programme immobilier contemporain à forte valeur patrimoniale"
       },
-      {
-        src: solarium3,
-        alt: "Tour résidentielle des Résidences SOLARIUM avec balcons panoramiques et espaces paysagers contemporains"
-      }
+     
     ],
     badge: "Signature",
     badgeColor: "#6AA0AE",

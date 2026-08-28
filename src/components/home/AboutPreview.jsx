@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import SectionTitle from '../common/SectionTitle'
-import oxygen from './../../assets/3D/residence-oxygene-appartement-haut-standing-ouled-fayet-alger.webp'
+import oxygen from './../../assets/3D/v2/residence-oxygene-appartement-haut-standing-ouled-fayet-alger.webp'
 
 const AboutPreview = () => {
   const highlights = [
