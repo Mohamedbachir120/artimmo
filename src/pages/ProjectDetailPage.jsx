@@ -7,6 +7,7 @@ import GlassCard from '../components/common/GlassCard'
 import ThreeViewer from '../components/projects/ThreeViewer'
 import { getProjectBySlug } from '../data/projects'
 import { getStatusColor } from '../utils/formatters'
+import { EASE_RISE, EASE_SOFT } from '../utils/motion'
 
 const ProjectDetailPage = () => {
   const { slug } = useParams()
@@ -67,24 +68,24 @@ const ProjectDetailPage = () => {
       <div className="page-content">
         {/* Hero */}
                {/* Hero */}
-               <section className="relative h-[60vh] min-h-[500px]">
+               <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
           <motion.img 
             key={activeImage} 
             src={project.images[activeImage].src} 
             alt={`${project.name} - ${project.city}`}
             className="absolute inset-0 w-full h-full object-cover"
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            transition={{ duration: 0.5 }} 
+            initial={{ opacity: 0, scale: 1.2 }} 
+            animate={{ opacity: 1, scale: 1 }} 
+            transition={{ opacity: { duration: 0.5 }, scale: { duration: 1, ease: EASE_SOFT } }} 
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-transparent" />
           
           <div className="absolute bottom-0 left-0 right-0 p-8">
             <div className="max-w-6xl mx-auto">
               <motion.div 
-                initial={{ opacity: 0, y: 30 }} 
+                initial={{ opacity: 0.001, y: 52 }} 
                 animate={{ opacity: 1, y: 0 }} 
-                transition={{ delay: 0.2 }}
+                transition={{ duration: 0.5, ease: EASE_RISE, delay: 0.4 }}
               >
                 <h1 
                   className="font-playfair text-4xl md:text-5xl font-bold text-white mb-2"
@@ -128,8 +129,10 @@ const ProjectDetailPage = () => {
               {/* Colonne principale */}
               <div className="lg:col-span-2">
                 <motion.div 
-                  initial={{ opacity: 0, y: 20 }} 
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0.001, y: 52 }} 
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.5, ease: EASE_RISE }}
                 >
                   <h2 className="font-playfair text-2xl text-white mb-6">Description</h2>
                   <p className="text-brand-sage leading-relaxed mb-8">{project.description}</p>
@@ -207,11 +210,9 @@ const ProjectDetailPage = () => {
                     </div>
                   </div>
 
-                  <Link to="/parlons-en">
-                    <Button variant="primary" size="lg" className="w-full mb-3">
-                      {project.status === 'En cours' ? 'Être informé' : 'Réserver ce bien'}
-                    </Button>
-                  </Link>
+                  <Button variant="primary" size="lg" className="w-full mb-3" to="/parlons-en">
+                    {project.status === 'En cours' ? 'Être informé' : 'Réserver ce bien'}
+                  </Button>
                  
                 </GlassCard>
               </div>

@@ -24,7 +24,43 @@
   --font-inter: 'Inter', sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* Frozen copy of the previous page, wiped away on navigation */
+.page-transition-snapshot {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  overflow: hidden;
+  pointer-events: none;
+  contain: paint;
+  background: #0d1721;
+  will-change: mask-image, -webkit-mask-image;
+}
+.page-transition-snapshot-content { position: absolute; left: 0; right: 0; width: 100%; }
+
+/* Nav link underline: slides out to the right, back in from the left */
+.nav-underline { position: relative; }
+.nav-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-underline:hover::after,
+.nav-underline.is-active::after { transform: scaleX(1); transform-origin: left; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-underline::after { transition: none; }
+}
 body { 
   font-family: 'AGHATO', sans-serif; 
   background: #0d1721; 

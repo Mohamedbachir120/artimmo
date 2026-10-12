@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import RevealText from '../common/RevealText'
+import { riseInView } from '../../utils/motion'
 import GlassCard from '../common/GlassCard'
 import Button from '../common/Button'
 import { CONTACT_INFO } from '../../utils/constants'
@@ -17,18 +18,18 @@ const CTASection = () => {
         <GlassCard variant="strong" className="p-8 md:p-12 text-center relative overflow-hidden" hover={false}>
           <div className="absolute inset-0 bg-gradient-radial" />
           <div className="relative z-10">
-            <h2 className="font-playfair text-3xl md:text-4xl text-white mb-4">
-              Chaque acquisition mérite une attention particulière
-            </h2>
-            <p className="text-brand-sage mb-8 max-w-xl mx-auto">
+            <RevealText
+              as="h2"
+              text="Chaque acquisition mérite une attention particulière"
+              className="font-playfair text-3xl md:text-4xl text-white mb-4"
+            />
+            <motion.p className="text-brand-sage mb-8 max-w-xl mx-auto" {...riseInView(0.2)}>
               Nos conseillers immobiliers vous offrent un accompagnement sur-mesure, à la hauteur de vos ambitions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/parlons-en">
-                <Button variant="primary" size="lg">
-                  Réserver un moment pour ma visite privée
-                </Button>
-              </Link>
+            </motion.p>
+            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" {...riseInView(0.3)}>
+              <Button variant="primary" size="lg" to="/parlons-en">
+                Réserver un moment pour ma visite privée
+              </Button>
               <Button 
                 variant="green" 
                 size="lg" 
@@ -37,7 +38,7 @@ const CTASection = () => {
               >
                 WhatsApp
               </Button>
-            </div>
+            </motion.div>
           </div>
         </GlassCard>
       </div>
