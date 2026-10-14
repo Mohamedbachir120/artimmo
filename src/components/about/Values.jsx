@@ -25,7 +25,7 @@ const Values = () => {
       <SectionTitle tag="Notre signature" title="Ce qui forge notre identité" />
       <div className="grid md:grid-cols-3 gap-6 mb-20">
         {values.map((value, i) => (
-          <GlassCard key={i} className="p-6 text-center" hover={false}>
+          <GlassCard key={i} className="p-6 text-center" hover={false} delay={i * 0.08}>
             <div className="w-12 h-12 bg-brand-blue/20 rounded-xl flex items-center justify-center mx-auto mb-4">
               <svg className="w-6 h-6 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={value.icon} />

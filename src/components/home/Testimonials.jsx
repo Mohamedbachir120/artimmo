@@ -24,7 +24,7 @@ const Testimonials = () => {
 
         <div className="grid md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, i) => (
-            <GlassCard key={testimonial.id} className="p-6" hover={false}>
+            <GlassCard key={testimonial.id} className="p-6" hover={false} delay={i * 0.08}>
               <div className="flex items-center gap-4 mb-4">
                 {/* <img 
                   src={testimonial.avatar} 
