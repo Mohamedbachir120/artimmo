@@ -119,3 +119,13 @@ body {
   0%, 100% { opacity: 0.3; } 
   50% { opacity: 0.6; } 
 }
+/* Construction reveal (project cards) */
+@keyframes reveal-buffer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+
+@keyframes reveal-caption {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
