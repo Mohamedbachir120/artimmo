@@ -129,3 +129,67 @@ body {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* ── 3D tour hotspots ─────────────────────────────────────────── */
+.tour-hotspot {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 9999px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.tour-hotspot__dot {
+  position: relative;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 4px rgba(106, 160, 174, 0.45), 0 4px 14px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.tour-hotspot__dot::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  animation: tour-pulse 2.4s ease-out infinite;
+}
+.tour-hotspot__label {
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  background: rgba(13, 23, 33, 0.72);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+.tour-hotspot:hover .tour-hotspot__label,
+.tour-hotspot:focus-visible .tour-hotspot__label,
+.tour-hotspot.is-active .tour-hotspot__label {
+  opacity: 1;
+  transform: none;
+}
+.tour-hotspot:hover .tour-hotspot__dot,
+.tour-hotspot.is-active .tour-hotspot__dot {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 5px rgba(106, 160, 174, 0.75), 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+.tour-hotspot:focus-visible {
+  outline: 2px solid #6AA0AE;
+  outline-offset: 2px;
+}
+@keyframes tour-pulse {
+  0% { transform: scale(0.8); opacity: 0.9; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-hotspot__dot::after { animation: none; opacity: 0; }
+}
