@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, MotionConfig } from 'framer-motion'
 import { useScrollPosition } from './hooks/useScrollPosition'
@@ -13,6 +13,9 @@ import ProjectsPage from './pages/ProjectsPage'
 import ProjectDetailPage from './pages/ProjectDetailPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
+
+// The 3D tour (three.js + R3F) is split into its own chunk, loaded on demand
+const PropertyTourPage = lazy(() => import('./pages/PropertyTourPage'))
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -35,6 +38,14 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/nos-signatures" element={<ProjectsPage />} />
           <Route path="/nos-signatures/:slug" element={<ProjectDetailPage />} />
+          <Route
+            path="/nos-signatures/:slug/visite-3d"
+            element={
+              <Suspense fallback={<div className="fixed inset-0 z-[200] bg-[#0d1721]" />}>
+                <PropertyTourPage />
+              </Suspense>
+            }
+          />
           <Route path="/artimmo" element={<AboutPage />} />
           <Route path="/parlons-en" element={<ContactPage />} />
         </Routes>
