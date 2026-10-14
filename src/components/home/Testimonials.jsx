@@ -1,47 +1,67 @@
+import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { testimonials } from '../../data/testimonials'
 import SectionTitle from '../common/SectionTitle'
-import GlassCard from '../common/GlassCard'
+import { EASE_OUT, riseInView } from '../../utils/motion'
 
-const StarRating = ({ rating }) => (
-  <div className="flex gap-1 mt-4">
-    {[...Array(rating)].map((_, i) => (
-      <svg key={i} className="w-4 h-4 text-brand-blue" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-      </svg>
-    ))}
-  </div>
-)
-
+// One voice at a time, set large; the other owners are listed beside it and
+// bring their words forward when chosen.
 const Testimonials = () => {
-  return (
-    <section className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <SectionTitle 
-          tag="Témoignages" 
-          title="Ce que disent nos clients" 
-          subtitle="La satisfaction de nos clients est notre plus grande récompense" 
-        />
+  const [active, setActive] = useState(0)
+  const current = testimonials[active]
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, i) => (
-            <GlassCard key={testimonial.id} className="p-6" hover={false} delay={i * 0.08}>
-              <div className="flex items-center gap-4 mb-4">
-                {/* <img 
-                  src={testimonial.avatar} 
-                  alt={testimonial.name} 
-                  className="w-12 h-12 rounded-full object-cover" 
-                /> */}
-                <div>
-                  <h4 className="text-white font-semibold">{testimonial.name}</h4>
-                  <p className="text-brand-sage text-xs">{testimonial.role}</p>
-                </div>
-              </div>
-              <p className="text-brand-sage text-sm leading-relaxed">
-                "{testimonial.text}"
-              </p>
-              <StarRating rating={testimonial.rating} />
-            </GlassCard>
-          ))}
+  return (
+    <section className="py-20 md:py-32 px-5 md:px-10">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 lg:gap-8">
+        <div className="lg:col-span-4">
+          <SectionTitle
+            tag="Témoignages"
+            title="Ce que disent nos clients"
+            subtitle="La satisfaction de nos clients est notre plus grande récompense"
+            center={false}
+          />
+          <motion.ul className="border-t border-white/10" role="tablist" aria-label="Témoignages" {...riseInView(0.2)}>
+            {testimonials.map((t, i) => (
+              <li key={t.id} className="border-b border-white/10">
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={i === active}
+                  onClick={() => setActive(i)}
+                  className="w-full text-left py-4 flex items-center gap-4 cursor-pointer group focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-blue"
+                >
+                  <span className={`h-px transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${i === active ? 'w-10 bg-brand-blue' : 'w-4 bg-white/30 group-hover:w-6'}`} />
+                  <span>
+                    <span className={`block transition-colors duration-500 ${i === active ? 'text-white' : 'text-brand-sage group-hover:text-white'}`}>{t.name}</span>
+                    <span className="block text-xs text-brand-sage/70">{t.role}</span>
+                  </span>
+                </button>
+              </li>
+            ))}
+          </motion.ul>
+        </div>
+
+        <div className="lg:col-span-7 lg:col-start-6 relative min-h-[18rem] flex items-center" role="tabpanel">
+          <span aria-hidden="true" className="absolute -top-10 -left-2 text-[10rem] leading-none text-brand-blue/20 select-none" style={{ fontFamily: 'Blacksword, cursive' }}>“</span>
+          <AnimatePresence mode="wait">
+            <motion.figure
+              key={current.id}
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.6, ease: EASE_OUT }}
+            >
+              <blockquote className="text-2xl md:text-4xl font-light text-white leading-snug tracking-tight">
+                {current.text}
+              </blockquote>
+              <figcaption className="mt-8 flex items-center gap-4 text-sm">
+                <span className="text-white">{current.name}</span>
+                <span className="h-px w-8 bg-white/20" />
+                <span className="text-brand-sage">{current.role}</span>
+                <span className="ml-auto text-brand-blue tracking-[0.2em]" aria-label={`${current.rating} sur 5`}>{'★'.repeat(current.rating)}</span>
+              </figcaption>
+            </motion.figure>
+          </AnimatePresence>
         </div>
       </div>
     </section>

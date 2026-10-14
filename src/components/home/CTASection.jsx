@@ -1,9 +1,11 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import RevealText from '../common/RevealText'
 import { riseInView } from '../../utils/motion'
-import GlassCard from '../common/GlassCard'
 import Button from '../common/Button'
+import Louvres from '../common/Louvres'
 import { CONTACT_INFO } from '../../utils/constants'
+import facade from './../../assets/3D/v2/verdonia vue de nuit.webp'
 
 const WhatsAppIcon = () => (
   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -11,36 +13,45 @@ const WhatsAppIcon = () => (
   </svg>
 )
 
+// Closing scene, a bookend to the opening: the louvres open again on the same
+// night view of Verdonia as the visitor arrives, and the invitation sits inside the building.
 const CTASection = () => {
+  const ref = useRef(null)
+  const reduced = useReducedMotion()
+  const { scrollYProgress: enter } = useScroll({ target: ref, offset: ['start end', 'center center'] })
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
+  const scale = useTransform(scrollYProgress, [0, 1], reduced ? [1, 1] : [1.2, 1])
+
   return (
-    <section className="py-20 px-4">
-      <div className="max-w-4xl mx-auto">
-        <GlassCard variant="strong" className="p-8 md:p-12 text-center relative overflow-hidden" hover={false}>
-          <div className="absolute inset-0 bg-gradient-radial" />
-          <div className="relative z-10">
-            <RevealText
-              as="h2"
-              text="Chaque acquisition mérite une attention particulière"
-              className="font-playfair text-3xl md:text-4xl text-white mb-4"
-            />
-            <motion.p className="text-brand-sage mb-8 max-w-xl mx-auto" {...riseInView(0.2)}>
-              Nos conseillers immobiliers vous offrent un accompagnement sur-mesure, à la hauteur de vos ambitions.
-            </motion.p>
-            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" {...riseInView(0.3)}>
-              <Button variant="primary" size="lg" to="/parlons-en">
-                Réserver un moment pour ma visite privée
-              </Button>
-              <Button 
-                variant="green" 
-                size="lg" 
-                href={`https://wa.me/${CONTACT_INFO.whatsapp}`}
-                icon={<WhatsAppIcon />}
-              >
-                WhatsApp
-              </Button>
-            </motion.div>
-          </div>
-        </GlassCard>
+    <section ref={ref} className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.img src={facade} alt="" aria-hidden="true" className="w-full h-full object-cover" style={{ scale }} loading="lazy" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d1721] via-[#0d1721]/55 to-[#0d1721]" />
+        <Louvres progress={enter} count={11} />
+      </div>
+
+      <div className="relative z-30 max-w-4xl mx-auto px-5 md:px-10 py-24 text-center">
+        <RevealText
+          as="h2"
+          text="Chaque acquisition mérite une attention particulière"
+          className="text-4xl md:text-6xl font-light text-white leading-tight tracking-tight mb-6"
+        />
+        <motion.p className="text-brand-sage mb-10 max-w-xl mx-auto" {...riseInView(0.2)}>
+          Nos conseillers immobiliers vous offrent un accompagnement sur-mesure, à la hauteur de vos ambitions.
+        </motion.p>
+        <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" {...riseInView(0.3)}>
+          <Button variant="primary" size="lg" to="/parlons-en">
+            Réserver un moment pour ma visite privée
+          </Button>
+          <Button
+            variant="green"
+            size="lg"
+            href={`https://wa.me/${CONTACT_INFO.whatsapp}`}
+            icon={<WhatsAppIcon />}
+          >
+            WhatsApp
+          </Button>
+        </motion.div>
       </div>
     </section>
   )

@@ -193,3 +193,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .tour-hotspot__dot::after { animation: none; opacity: 0; }
 }
+
+/* Home residence scenes: the construction-film tile frames a detail of the
+   cover instead of repeating the full view beside it */
+.construction-inset .project-card-img { object-position: 68% 38%; scale: 1.7; }

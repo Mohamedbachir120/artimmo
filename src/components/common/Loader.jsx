@@ -16,10 +16,11 @@ const Loader = ({ onComplete }) => {
     <motion.div
       className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
       style={{ background: "#0d1721" }}
-      initial={{ clipPath: "inset(0 0 0% 0)" }}
-      // Curtain lifts upward to uncover the page
-      exit={{ clipPath: "inset(0 0 100% 0)" }}
-      transition={{ duration: 0.7, ease: EASE_OUT }}
+      initial={{ opacity: 1 }}
+      // Dissolves into the closed louvres of the opening scene, which then
+      // pivot open: one continuous reveal instead of two curtains
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.45, ease: EASE_OUT }}
     >
       <motion.div
         initial={{ opacity: 0.001, y: 52 }}
