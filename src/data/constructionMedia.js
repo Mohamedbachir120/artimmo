@@ -41,13 +41,13 @@ export const constructionMedia = {}
 
 export const getConstructionMedia = (slug) => constructionMedia[slug] ?? null
 
-// ─── Aperçu en développement uniquement ─────────────────────────────────────
-// Film de démonstration pour tester le survol tant que les vrais médias
-// manquent. Ce chantier (SPIE, France) n'a AUCUN lien avec les résidences
-// ARTIMMO : la carte l'indique pendant la lecture, et ni ces entrées ni les
-// fichiers /construction/_demo n'existent dans le build de production.
+// ─── Aperçu de démonstration ────────────────────────────────────────────────
+// Film de démonstration pour montrer le survol au client tant que les vrais
+// médias manquent (aussi présent en production). Ce chantier (SPIE, France)
+// n'a AUCUN lien avec les résidences ARTIMMO : la carte l'indique pendant la
+// lecture. Une entrée réelle ajoutée plus haut remplace la démo pour son projet.
 // Source : « Construction Timelapse - SPIE », MELKARTIS, CC BY 3.0, Wikimedia Commons.
-if (import.meta.env.DEV) {
+{
   const credit = 'Démo : MELKARTIS, CC BY 3.0 (Wikimedia Commons)'
   const demoVideo = {
     video: {
