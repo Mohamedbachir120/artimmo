@@ -4,7 +4,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-if [ ! -f .env ]; then
+if [[ ! -f .env ]]; then
   echo "Missing .env: copy .env.example to .env and fill it in." >&2
   exit 1
 fi
@@ -16,7 +16,7 @@ FTP_DIR="${FTP_DIR:-}"
 
 # FTPS by default; set FTP_PROTOCOL=ftp in .env if the server has no TLS.
 tls=(--ssl-reqd)
-[ "${FTP_PROTOCOL:-ftps}" = "ftp" ] && tls=()
+[[ "${FTP_PROTOCOL:-ftps}" == "ftp" ]] && tls=()
 
 npm run build
 
