@@ -1,0 +1,12 @@
+name: FTP connection check
+on:
+  push:
+    branches: [diag/ftp-check]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "== DNS =="; dig +short ftp.artimmo.dz; dig +short artimmo.dz; dig +short NS artimmo.dz
+          echo "== port 21 =="; timeout 20 nc -vz ftp.artimmo.dz 21 || echo "port 21 unreachable"
+          echo "== banner =="; timeout 20 curl -sv ftp://ftp.artimmo.dz/ --max-time 15 2>&1 | head -20 || true

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { riseInView } from '../../utils/motion'
 import { timeline } from '../../data/timeline'
 import SectionTitle from '../common/SectionTitle'
 
@@ -13,9 +14,7 @@ const Timeline = () => {
           <motion.div 
             key={i} 
             className={`relative flex items-center gap-8 mb-12 ${i % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-            initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }} 
-            whileInView={{ opacity: 1, x: 0 }} 
-            viewport={{ once: true }}
+            {...riseInView(0, 0.5)}
           >
             <div className={`flex-1 ${i % 2 === 0 ? 'text-right' : 'text-left'}`}>
               <span className="text-brand-blue font-playfair text-2xl font-bold">{item.year}</span>

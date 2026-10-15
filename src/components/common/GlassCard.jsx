@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { riseInView } from '../../utils/motion'
 
 const GlassCard = ({ 
   children, 
@@ -6,7 +7,8 @@ const GlassCard = ({
   className = '',
   hover = true,
   onClick,
-  as = 'div'
+  as = 'div',
+  delay = 0
 }) => {
   const variants = {
     default: 'glass',
@@ -18,10 +20,8 @@ const GlassCard = ({
   const motionProps = {
     className: `${variants[variant]} rounded-2xl ${className}`,
     onClick,
-    ...(hover && onClick ? { whileHover: { y: -10 } } : {}),
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true }
+    ...(hover && onClick ? { whileHover: { y: -4 } } : {}),
+    ...riseInView(delay, 0.2)
   }
 
   return (

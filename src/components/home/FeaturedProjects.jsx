@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { riseInView } from '../../utils/motion'
 import { projectsData } from '../../data/projects'
 import SectionTitle from '../common/SectionTitle'
 import ProjectCard from '../projects/ProjectCard'
@@ -17,23 +18,21 @@ const FeaturedProjects = () => {
         />
 
         <div className="grid md:grid-cols-3 gap-6">
-          {featured.map(project => (
-            <ProjectCard key={project.id} project={project} />
+          {featured.map((project, i) => (
+            <ProjectCard key={project.id} project={project} index={i} />
           ))}
         </div>
 
         <motion.div 
           className="text-center mt-10" 
-          initial={{ opacity: 0 }} 
-          whileInView={{ opacity: 1 }} 
-          viewport={{ once: true }}
+          {...riseInView(0.2)}
         >
           <Link 
             to="/nos-signatures" 
-            className="text-brand-blue hover:text-white transition-colors inline-flex items-center gap-2"
+            className="group nav-underline text-brand-blue hover:text-white transition-colors duration-500 inline-flex items-center gap-2"
           >
             Voir toutes nos résidences
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>

@@ -1,17 +1,19 @@
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import SEOHead from '../seo/SEOHead'
 import Button from '../components/common/Button'
 import GlassCard from '../components/common/GlassCard'
-import ThreeViewer from '../components/projects/ThreeViewer'
 import { getProjectBySlug } from '../data/projects'
 import { getStatusColor } from '../utils/formatters'
+import { EASE_RISE, EASE_SOFT } from '../utils/motion'
+
+// Warm the 3D tour chunk as soon as the visitor shows intent
+const prefetchTour = () => import('./PropertyTourPage')
 
 const ProjectDetailPage = () => {
   const { slug } = useParams()
   const project = getProjectBySlug(slug)
-  const [show3DFullscreen, setShow3DFullscreen] = useState(false)
   const [activeImage, setActiveImage] = useState(0)
 
   if (!project) {
@@ -58,33 +60,28 @@ const ProjectDetailPage = () => {
   return (
     <>
       <SEOHead {...seoData} />
-      <AnimatePresence>
-        {show3DFullscreen && (
-          <ThreeViewer isFullscreen={true} onClose={() => setShow3DFullscreen(false)} />
-        )}
-      </AnimatePresence>
 
       <div className="page-content">
         {/* Hero */}
                {/* Hero */}
-               <section className="relative h-[60vh] min-h-[500px]">
+               <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
           <motion.img 
             key={activeImage} 
             src={project.images[activeImage].src} 
             alt={`${project.name} - ${project.city}`}
             className="absolute inset-0 w-full h-full object-cover"
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            transition={{ duration: 0.5 }} 
+            initial={{ opacity: 0, scale: 1.2 }} 
+            animate={{ opacity: 1, scale: 1 }} 
+            transition={{ opacity: { duration: 0.5 }, scale: { duration: 1, ease: EASE_SOFT } }} 
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-transparent" />
           
           <div className="absolute bottom-0 left-0 right-0 p-8">
             <div className="max-w-6xl mx-auto">
               <motion.div 
-                initial={{ opacity: 0, y: 30 }} 
+                initial={{ opacity: 0.001, y: 52 }} 
                 animate={{ opacity: 1, y: 0 }} 
-                transition={{ delay: 0.2 }}
+                transition={{ duration: 0.5, ease: EASE_RISE, delay: 0.4 }}
               >
                 <h1 
                   className="font-playfair text-4xl md:text-5xl font-bold text-white mb-2"
@@ -102,6 +99,17 @@ const ProjectDetailPage = () => {
                   </svg>
                   {project.location}
                 </p>
+                <Link
+                  to={`/nos-signatures/${project.slug}/visite-3d`}
+                  onMouseEnter={prefetchTour}
+                  onFocus={prefetchTour}
+                  className="mt-5 inline-flex items-center gap-2 rounded-xl glass-strong px-5 py-3 text-sm font-semibold text-white hover:bg-brand-blue/40 transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 10.5L12 4l9 6.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1v-9.5z" />
+                  </svg>
+                  Visite immersive 3D
+                </Link>
               </motion.div>
             </div>
           </div>
@@ -128,9 +136,38 @@ const ProjectDetailPage = () => {
               {/* Colonne principale */}
               <div className="lg:col-span-2">
                 <motion.div 
-                  initial={{ opacity: 0, y: 20 }} 
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0.001, y: 52 }} 
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.5, ease: EASE_RISE }}
                 >
+                  <Link
+                    to={`/nos-signatures/${project.slug}/visite-3d`}
+                    onMouseEnter={prefetchTour}
+                    onFocus={prefetchTour}
+                    className="group relative mb-10 block overflow-hidden rounded-2xl border border-brand-blue/20"
+                  >
+                    <img
+                      src={project.images[0].src}
+                      alt=""
+                      className="h-56 md:h-64 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#0d1721]/90 via-[#0d1721]/60 to-transparent" />
+                    <div className="absolute inset-0 flex flex-col justify-center p-6 md:p-8 max-w-md">
+                      <span className="text-[11px] uppercase tracking-[0.25em] text-brand-blue mb-2">Visite immersive</span>
+                      <span className="font-playfair text-2xl text-white mb-2">Entrez dans l'appartement témoin</span>
+                      <span className="text-sm text-brand-sage mb-4">
+                        Parcourez le séjour, la cuisine, la suite parentale et la terrasse comme si vous y étiez, de jour comme en soirée.
+                      </span>
+                      <span className="inline-flex items-center gap-2 text-sm font-semibold text-white">
+                        Commencer la visite
+                        <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </span>
+                    </div>
+                  </Link>
+
                   <h2 className="font-playfair text-2xl text-white mb-6">Description</h2>
                   <p className="text-brand-sage leading-relaxed mb-8">{project.description}</p>
 
@@ -207,11 +244,9 @@ const ProjectDetailPage = () => {
                     </div>
                   </div>
 
-                  <Link to="/parlons-en">
-                    <Button variant="primary" size="lg" className="w-full mb-3">
-                      {project.status === 'En cours' ? 'Être informé' : 'Réserver ce bien'}
-                    </Button>
-                  </Link>
+                  <Button variant="primary" size="lg" className="w-full mb-3" to="/parlons-en">
+                    {project.status === 'En cours' ? 'Être informé' : 'Réserver ce bien'}
+                  </Button>
                  
                 </GlassCard>
               </div>

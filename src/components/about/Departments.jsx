@@ -8,7 +8,7 @@ const Departments = () => {
       <SectionTitle tag="Équipe" title="Nos départements" />
       <div className="grid md:grid-cols-3 gap-6">
         {departments.map((dept, i) => (
-          <GlassCard key={dept.id} className="p-8 text-center group" hover={false}>
+          <GlassCard key={dept.id} className="p-8 text-center group" hover={false} delay={i * 0.08}>
             <div className="w-16 h-16 bg-brand-blue/20 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-brand-blue/30 transition-colors">
               <svg className="w-8 h-8 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={dept.icon} />
