@@ -1,7 +1,4 @@
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-
-const MotionLink = motion.create(Link)
 
 const Button = ({ 
   children, 
@@ -12,8 +9,7 @@ const Button = ({
   icon,
   type = 'button',
   disabled = false,
-  href,
-  to
+  href
 }) => {
   const baseClasses = 'rounded-xl font-semibold btn-shine transition-all inline-flex items-center justify-center gap-2'
   
@@ -33,18 +29,8 @@ const Button = ({
   const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${className}`
 
   const motionProps = {
-    whileHover: disabled ? {} : { y: -2 },
-    whileTap: disabled ? {} : { scale: 0.98 },
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
-  }
-
-  if (to) {
-    return (
-      <MotionLink to={to} onClick={onClick} className={classes} {...motionProps}>
-        {icon && <span className="w-5 h-5">{icon}</span>}
-        {children}
-      </MotionLink>
-    )
+    whileHover: disabled ? {} : { scale: 1.02 },
+    whileTap: disabled ? {} : { scale: 0.98 }
   }
 
   if (href) {
