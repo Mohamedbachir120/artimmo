@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { NAV_ITEMS, CONTACT_INFO } from '../../utils/constants'
 import { projectsData } from '../../data/projects'
+import { localPages } from '../../data/localPages'
 import LogoWhite from "./../../assets/artimmo-white.png"
 
 export const GoogleMap = () => {
@@ -101,6 +102,22 @@ const Footer = () => {
         <div className="mb-8">
           <GoogleMap />
         </div>
+
+        {/* Promotion immobilière par commune */}
+        <nav aria-label="Promotion immobilière par commune" className="mb-8">
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            {localPages.map(page => (
+              <li key={page.slug}>
+                <Link
+                  to={`/${page.slug}`}
+                  className="text-brand-sage text-xs hover:text-white transition-colors"
+                >
+                  {page.h1}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
         {/* Bottom Bar */}
         <div className="border-t border-brand-primary/30 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">

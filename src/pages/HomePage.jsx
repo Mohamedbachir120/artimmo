@@ -8,8 +8,8 @@ import CTASection from '../components/home/CTASection'
 
 const HomePage = () => {
   const seoData = {
-    title: "Promoteur Immobilier Haut Standing Alger",
-    description: "ARTIMMO Promotion - Promoteur immobilier de référence à Alger. Appartements et duplex haut standing à Ouled Fayet, Draria et Chéraga. Investissez dans l'immobilier d'exception.",
+    title: "Promotion immobilière à Alger – Appartements haut standing",
+    description: "ARTIMMO Promotion, promotion immobilière à Alger. Appartements et duplex haut standing à Ouled Fayet, Draria et Chéraga. Investissez dans l'immobilier d'exception.",
     keywords: [
       "immobilier alger",
       "promotion immobiliere",
@@ -32,7 +32,7 @@ const HomePage = () => {
         "addressLocality": "Alger",
         "addressCountry": "DZ"
       },
-      "telephone": "+213 (0) 23 XX XX XX",
+      "telephone": "+213 559 29 29 29",
       "email": "contact@artimmo.dz"
     }
   }

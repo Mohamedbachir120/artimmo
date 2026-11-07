@@ -11,6 +11,8 @@ import ProjectsPage from './pages/ProjectsPage'
 import ProjectDetailPage from './pages/ProjectDetailPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
+import LocalLandingPage from './pages/LocalLandingPage'
+import { localPages } from './data/localPages'
 
 const PageTransition = ({ children }) => (
   <motion.div
@@ -90,6 +92,17 @@ const App = () => {
               </PageTransition>
             } 
           />
+          {localPages.map(page => (
+            <Route
+              key={page.slug}
+              path={`/${page.slug}`}
+              element={
+                <PageTransition>
+                  <LocalLandingPage page={page} />
+                </PageTransition>
+              }
+            />
+          ))}
         </Routes>
       </AnimatePresence>
 

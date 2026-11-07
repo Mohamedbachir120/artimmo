@@ -14,6 +14,12 @@
   # send them to the residence page.
   RewriteRule ^nos-signatures/([^/]+)/visite-3d/?$ /nos-signatures/$1 [R=301,L]
 
+  # Serve the build-time page for each route (scripts/prerender-seo.mjs), so
+  # search engines get that page's title and text without running JavaScript.
+  RewriteCond %{REQUEST_URI} !^/_seo/
+  RewriteCond %{DOCUMENT_ROOT}/_seo/$1.html -f
+  RewriteRule ^(.+?)/?$ /_seo/$1.html [L]
+
   # Send every unknown path to index.html so React Router can handle it.
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
