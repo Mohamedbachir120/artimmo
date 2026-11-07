@@ -1,0 +1,22 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # One address only: https://artimmo.dz (Google currently splits the site
+  # between www., http:// and https:// versions).
+  RewriteCond %{HTTP_HOST} ^www\.artimmo\.dz$ [NC]
+  RewriteRule ^(.*)$ https://artimmo.dz/$1 [R=301,L]
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://artimmo.dz/$1 [R=301,L]
+
+  # The 3D tour pages from the October version are indexed but no longer exist:
+  # send them to the residence page.
+  RewriteRule ^nos-signatures/([^/]+)/visite-3d/?$ /nos-signatures/$1 [R=301,L]
+
+  # Send every unknown path to index.html so React Router can handle it.
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
