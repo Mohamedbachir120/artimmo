@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import SEOHead from '../seo/SEOHead'
 import ProjectCard from '../components/projects/ProjectCard'
 import { projectsData } from '../data/projects'
-import { localPages } from '../data/localPages'
+import AreaLinks from '../components/common/AreaLinks'
 
 const LocalLandingPage = ({ page }) => {
   const projects = page.city
@@ -53,20 +53,10 @@ const LocalLandingPage = ({ page }) => {
             Prendre rendez-vous
           </Link>
 
-          <nav aria-label="Promotion immobilière par commune" className="border-t border-brand-primary/30 pt-6">
+          <div className="border-t border-brand-primary/30 pt-6">
             <p className="text-white font-semibold mb-3">Promotion immobilière par commune</p>
-            <ul className="flex flex-wrap gap-x-6 gap-y-2">
-              {localPages
-                .filter((p) => p.slug !== page.slug)
-                .map((p) => (
-                  <li key={p.slug}>
-                    <Link to={`/${p.slug}`} className="text-brand-sage text-sm hover:text-white">
-                      {p.h1}
-                    </Link>
-                  </li>
-                ))}
-            </ul>
-          </nav>
+            <AreaLinks exclude={page.slug} />
+          </div>
         </div>
       </div>
     </>

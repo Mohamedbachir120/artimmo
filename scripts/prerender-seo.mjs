@@ -93,15 +93,16 @@ function replaceOnce(html, re, value, label) {
 for (const r of routes) {
   const url = `${SITE}${r.path}`
   let html = template
-  if (r.title) {
-    html = replaceOnce(html, /<title>[^<]*<\/title>/, `<title>${esc(r.title)}</title>`, '<title>')
-    html = replaceOnce(html, /(<meta property="og:title" content=")[^"]*/, `$1${esc(r.title)}`, 'og:title')
-    html = replaceOnce(html, /(<meta name="twitter:title" content=")[^"]*/, `$1${esc(r.title)}`, 'twitter:title')
-  }
-  if (r.description) {
-    html = replaceOnce(html, /(<meta name="description" content=")[^"]*/, `$1${esc(r.description)}`, 'description')
-    html = replaceOnce(html, /(<meta property="og:description" content=")[^"]*/, `$1${esc(r.description)}`, 'og:description')
-    html = replaceOnce(html, /(<meta name="twitter:description" content=")[^"]*/, `$1${esc(r.description)}`, 'twitter:description')
+  if (r.title) html = replaceOnce(html, /<title>[^<]*<\/title>/, `<title>${esc(r.title)}</title>`, '<title>')
+  const metas = [
+    ['meta property="og:title"', r.title],
+    ['meta name="twitter:title"', r.title],
+    ['meta name="description"', r.description],
+    ['meta property="og:description"', r.description],
+    ['meta name="twitter:description"', r.description],
+  ]
+  for (const [tag, value] of metas) {
+    if (value) html = replaceOnce(html, new RegExp(`(<${tag} content=")[^"]*`), `$1${esc(value)}`, tag)
   }
   html = replaceOnce(html, /(<link rel="canonical" href=")[^"]*/, `$1${url}`, 'canonical')
   html = replaceOnce(html, /(<meta property="og:url" content=")[^"]*/, `$1${url}`, 'og:url')
