@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion'
-import RevealText from './RevealText'
-import { riseInView } from '../../utils/motion'
 
 const SectionTitle = ({ 
   tag, 
@@ -10,27 +8,24 @@ const SectionTitle = ({
   className = '' 
 }) => {
   return (
-    <div className={`${center ? 'text-center' : ''} mb-12 ${className}`}>
+    <motion.div 
+      className={`${center ? 'text-center' : ''} mb-12 ${className}`}
+      initial={{ opacity: 0, y: 20 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      viewport={{ once: true }}
+    >
       {tag && (
-        <motion.span
-          className="inline-block text-brand-blue uppercase tracking-[3px] text-xs font-medium"
-          {...riseInView(0)}
-        >
+        <span className="text-brand-blue uppercase tracking-[3px] text-xs font-medium">
           {tag}
-        </motion.span>
+        </span>
       )}
-      <RevealText
-        as="h2"
-        text={title}
-        className="font-playfair text-3xl md:text-4xl lg:text-5xl text-white mt-3 mb-4"
-        delay={0.1}
-      />
+      <h2 className="font-playfair text-3xl md:text-4xl lg:text-5xl text-white mt-3 mb-4">
+        {title}
+      </h2>
       {subtitle && (
-        <motion.p className={`text-brand-sage max-w-2xl ${center ? 'mx-auto' : ''}`} {...riseInView(0.3)}>
-          {subtitle}
-        </motion.p>
+        <p className="text-brand-sage max-w-2xl mx-auto">{subtitle}</p>
       )}
-    </div>
+    </motion.div>
   )
 }
 

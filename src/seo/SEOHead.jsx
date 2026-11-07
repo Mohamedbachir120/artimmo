@@ -30,7 +30,7 @@ const SEOHead = ({
       <meta property="og:url" content={fullUrl} />
       <meta property="og:image" content={image} />
       <meta property="og:site_name" content={SITE_NAME} />
-      <meta property="og:locale" content="fr_FR" />
+      <meta property="og:locale" content="fr_DZ" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

@@ -1,21 +1,37 @@
-import { useState, lazy, Suspense } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { AnimatePresence, MotionConfig } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useScrollPosition } from './hooks/useScrollPosition'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import AmbientBackground from './components/layout/AmbientBackground'
 import Loader from './components/common/Loader'
-import SmoothScroll from './components/layout/SmoothScroll'
-import PageTransition from './components/layout/PageTransition'
 import HomePage from './pages/HomePage'
 import ProjectsPage from './pages/ProjectsPage'
 import ProjectDetailPage from './pages/ProjectDetailPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 
-// The 3D tour (three.js + R3F) is split into its own chunk, loaded on demand
-const PropertyTourPage = lazy(() => import('./pages/PropertyTourPage'))
+const PageTransition = ({ children }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.4 }}
+  >
+    {children}
+  </motion.div>
+)
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation()
+  
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [pathname])
+
+  return null
+}
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -23,36 +39,66 @@ const App = () => {
   const location = useLocation()
 
   return (
-    <MotionConfig reducedMotion="user">
-      <SmoothScroll />
+    <>
       <AnimatePresence>
         {loading && <Loader onComplete={() => setLoading(false)} />}
       </AnimatePresence>
 
       <AmbientBackground />
       <Navbar scrolled={scrolled} />
-      <PageTransition />
+      <ScrollToTop />
 
-      <main>
+      <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/nos-signatures" element={<ProjectsPage />} />
-          <Route path="/nos-signatures/:slug" element={<ProjectDetailPage />} />
-          <Route
-            path="/nos-signatures/:slug/visite-3d"
+          <Route 
+            path="/" 
             element={
-              <Suspense fallback={<div className="fixed inset-0 z-[200] bg-[#0d1721]" />}>
-                <PropertyTourPage />
-              </Suspense>
-            }
+              <PageTransition>
+                <HomePage />
+              </PageTransition>
+            } 
           />
-          <Route path="/artimmo" element={<AboutPage />} />
-          <Route path="/parlons-en" element={<ContactPage />} />
+          <Route 
+            path="/nos-signatures" 
+            element={
+              <PageTransition>
+                <ProjectsPage />
+              </PageTransition>
+            } 
+          />
+          <Route 
+            path="/nos-signatures/:slug" 
+            element={
+              <PageTransition>
+                <ProjectDetailPage />
+              </PageTransition>
+            } 
+          />
+          <Route 
+            path="/artimmo" 
+            element={
+              <PageTransition>
+                <AboutPage />
+              </PageTransition>
+            } 
+          />
+          <Route 
+            path="/parlons-en" 
+            element={
+              <PageTransition>
+                <ContactPage />
+              </PageTransition>
+            } 
+          />
         </Routes>
-        <Footer />
-      </main>
-    </MotionConfig>
+      </AnimatePresence>
+
+      <Footer />
+    </>
   )
 }
+
+
+
 
 export default App

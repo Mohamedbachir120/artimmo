@@ -11,7 +11,7 @@ export const NAV_ITEMS = [
 
 export const SITE_NAME = 'ARTIMMO Promotion'
 export const SITE_URL = 'https://artimmo.dz'
-export const DEFAULT_OG_IMAGE = 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80'
+export const DEFAULT_OG_IMAGE = 'https://artimmo.dz/og-image.jpg'
 
 export const CONTACT_INFO = {
   address: 'N°906 section 02, Groupe propriété, commune de, Ouled Fayet 16094',
