@@ -17,7 +17,7 @@ const SITE = 'https://artimmo.dz'
 const BRAND = 'ARTIMMO Promotion'
 
 const esc = (s) =>
-  String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+  String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;')
 
 // Load the data modules through Vite so their image imports resolve.
 const vite = await createServer({ root, server: { middlewareMode: true }, appType: 'custom', logLevel: 'error' })
@@ -43,11 +43,11 @@ const links = [
   ['/artimmo', 'ARTIMMO'],
   ['/parlons-en', 'Parlons-en'],
 ]
-const nav = `<nav><ul>${links.map(([href, label]) => `<li><a href="${href}">${esc(label)}</a></li>`).join('')}</ul></nav>`
+const navItem = ([href, label]) => '<li><a href="' + href + '">' + esc(label) + '</a></li>'
+const nav = `<nav><ul>${links.map(navItem).join('')}</ul></nav>`
+const paragraph = (text) => '<p>' + esc(text) + '</p>'
 const block = (h1, paragraphs) =>
-  `<div class="max-w-3xl mx-auto px-4 pt-28 pb-20 text-white"><h1>${esc(h1)}</h1>${paragraphs
-    .map((p) => `<p>${esc(p)}</p>`)
-    .join('')}${nav}</div>`
+  `<div class="max-w-3xl mx-auto px-4 pt-28 pb-20 text-white"><h1>${esc(h1)}</h1>${paragraphs.map(paragraph).join('')}${nav}</div>`
 
 const residencesText = projectsData.map(
   (p) => `${p.name} (${p.city}) : ${p.projectInfo.totalLogements} logements ${p.projectInfo.types.join(', ')}, ${p.projectInfo.surfaces}.`
@@ -90,7 +90,7 @@ function replaceOnce(html, re, value, label) {
   return html.replace(re, value)
 }
 
-for (const r of routes) {
+const writes = routes.map(async (r) => {
   const url = `${SITE}${r.path}`
   let html = template
   if (r.title) html = replaceOnce(html, /<title>[^<]*<\/title>/, `<title>${esc(r.title)}</title>`, '<title>')
@@ -111,6 +111,7 @@ for (const r of routes) {
   const file = r.path === '/' ? join(outDir, 'index.html') : join(outDir, '_seo', `${r.path.slice(1)}.html`)
   await mkdir(dirname(file), { recursive: true })
   await writeFile(file, html)
-}
+})
+await Promise.all(writes)
 
 console.log(`prerender-seo: wrote ${routes.length} pages`)
